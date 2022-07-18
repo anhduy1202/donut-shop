@@ -5,12 +5,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        lemon: ["lemon"],
+        lemon: ["Lemon"],
+        lobster: ["Lobster"],
+        lemonada: ["Lemonada"],
+        lexend: ["Lexend Exa"]
       },
       colors: {
         "pink-500": "#F762B2",
         "pink-600": "#FF73AE",
+        "pink-700": "#FF4493",
         "pink-400": "#FFDDEB",
+        "button-pink": "#FF95C1"
       },
       fontSize: {
         8: "8px",
@@ -29,6 +34,9 @@ module.exports = {
         42: "42px",
         48: "48px",
         64: "64px",
+      },
+      boxShadow: {
+        pink: "0 35px 60px -15px rgba(255,68,147,1)",
       },
     },
   },

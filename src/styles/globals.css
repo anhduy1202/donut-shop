@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-shadow-pink {
+    text-shadow: -3px -5px 1px rgba(255, 68, 147, 1);
+  }
+
+  .text-shadow-lg-mycolor {
+    text-shadow: 3px 5px 7px rgb(2 51 55.7 / 7);
+  }
+
+}
