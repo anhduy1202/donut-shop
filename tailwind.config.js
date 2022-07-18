@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        lemon: ["lemon"],
+      },
       colors: {
         "pink-500": "#F762B2",
         "pink-600": "#FF73AE",
