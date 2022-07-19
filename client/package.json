@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/client": "^3.3.2",
+    "@sanity/image-url": "^1.0.1",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
     "next": "12.2.1",

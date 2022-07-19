@@ -7,6 +7,7 @@ import Head from "next/head";
 import Banner from "../components/Banner/Banner";
 import axios from "axios";
 import { menuType } from "../interface";
+import { client } from "../../lib/sanity";
 import Featured from "../components/Featured/Featured";
 import Link from "next/link";
 import Locations from "../components/Locations/Locations";
@@ -14,7 +15,9 @@ import Locations from "../components/Locations/Locations";
 const Home: NextPage = ({
   featuredMenuData,
   locationData,
+  galleryData
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  console.log(galleryData);
   return (
     <section>
       <Head>
@@ -42,11 +45,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const featuredMenu = menus.data.filter(
     (item: menuType) => item.featured === true
   );
+  const query=  '*[_type == "gallery"]';
+  const galleries = await client.fetch(query);
+
   const res = await Promise.all([featuredMenu, locations]);
   return {
     props: {
       featuredMenuData: res[0],
       locationData: res[1].data,
+      galleryData: galleries
     },
   };
 };
