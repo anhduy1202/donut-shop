@@ -12,3 +12,15 @@ export interface locationType {
     address:string,
     hours:string
 }
+
+
+export interface imageType {
+    _ref: string,
+    _type: string
+}
+
+export interface galleryType {
+    _key: string,
+    _type: string,
+    asset: imageType
+}

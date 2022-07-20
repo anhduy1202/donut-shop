@@ -25,7 +25,7 @@ export const SubHeading: React.FC<contentType> = (props) => {
 export const SectionHeading: React.FC<contentType> = (props) => {
   const { content } = props;
   return (
-    <div>
+    <div className="">
       <p className="text-20">{content}</p>
     </div>
   );

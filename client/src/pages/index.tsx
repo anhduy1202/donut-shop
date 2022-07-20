@@ -11,13 +11,24 @@ import { client } from "../../lib/sanity";
 import Featured from "../components/Featured/Featured";
 import Link from "next/link";
 import Locations from "../components/Locations/Locations";
+import Gallery from "../components/Gallery/Gallery";
+import { useEffect, useState } from "react";
+import Contact from "../components/Contact/Contact";
 
 const Home: NextPage = ({
   featuredMenuData,
   locationData,
-  galleryData
+  galleryData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(galleryData);
+  const [imageNumber, setNumber] = useState(4);
+  const [loadMore, setLoadMore] = useState(false);
+
+  useEffect(() => {
+    if (loadMore) {
+      setNumber((number) => number += 4);
+      setLoadMore(false)
+    }
+  }, [loadMore]);
   return (
     <section>
       <Head>
@@ -35,6 +46,8 @@ const Home: NextPage = ({
         </Link>
       </div>
       <Locations data={locationData} />
+      <Gallery data={(galleryData[0].image).slice(0,imageNumber)} setLoadMore={setLoadMore} />
+      <Contact/>
     </section>
   );
 };
@@ -45,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const featuredMenu = menus.data.filter(
     (item: menuType) => item.featured === true
   );
-  const query=  '*[_type == "gallery"]';
+  const query = '*[_type == "gallery"]';
   const galleries = await client.fetch(query);
 
   const res = await Promise.all([featuredMenu, locations]);
@@ -53,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       featuredMenuData: res[0],
       locationData: res[1].data,
-      galleryData: galleries
+      galleryData: galleries,
     },
   };
 };
