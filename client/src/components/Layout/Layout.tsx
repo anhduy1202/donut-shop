@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { HiOutlineMenu } from "react-icons/hi";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaYelp, FaFacebook } from "react-icons/fa";
 import useResponsive from "../Hook/useResponsive";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Footer from "../Footer/Footer";
 
 interface PageProps {
   children?: React.ReactNode;
@@ -15,7 +16,7 @@ export const PageLayout: React.FC<PageProps> = ({ children }) => {
     <section>
       <NavBar />
       {children}
-      <Footer/>
+      <Footer />
     </section>
   );
 };
@@ -64,7 +65,12 @@ const NavBar: React.FC = () => {
             return (
               <div key={idx}>
                 <Link href={item.url}>
-                  <p className={`${router.asPath == item.url && "text-pink-700 underline underline-offset-4 decoration-4"}`}>
+                  <p
+                    className={`${
+                      router.asPath == item.url &&
+                      "text-pink-700 underline underline-offset-4 decoration-4"
+                    }`}
+                  >
                     {item.title}
                   </p>
                 </Link>
@@ -74,5 +80,20 @@ const NavBar: React.FC = () => {
         </div>
       )}
     </nav>
+  );
+};
+
+const Footer: React.FC = () => {
+  return (
+    <footer className="bg-button-pink mx-[-16px] py-4 flex flex-col items-center">
+      <div className="flex gap-9 justify-center">
+        <AiFillInstagram color="white" size={28} />
+        <FaYelp color="white" size={28} />
+        <FaFacebook color="white" size={28} />
+      </div>
+      <p className="mt-4 text-white text-12 font-lemonada font-semibold">
+        Copyright @2022
+      </p>
+    </footer>
   );
 };
