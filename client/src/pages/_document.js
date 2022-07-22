@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html className="overflow-x-hidden overflow-y-auto mx-[16px] mt-[32px] mb-[16px] font-lemon text-pink-600">
+      <Html className="overflow-x-hidden overflow-y-auto mx-[16px] mb-[16px] font-lemon text-pink-600">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
